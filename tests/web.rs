@@ -5,6 +5,9 @@
 extern crate wasm_bindgen_test;
 use wasm_bindgen_test::*;
 
+// extern crate wasm-keys-gen;
+// use wasm-keys-gen;
+
 wasm_bindgen_test_configure!(run_in_browser);
 
 #[wasm_bindgen_test]

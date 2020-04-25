@@ -1,6 +1,8 @@
 mod utils;
 
 use wasm_bindgen::prelude::*;
+use bip39::{Mnemonic, MnemonicType, Language};
+
 
 // When the `wee_alloc` feature is enabled, use `wee_alloc` as the global
 // allocator.
@@ -15,5 +17,15 @@ extern {
 
 #[wasm_bindgen]
 pub fn greet() {
-    alert("Hello, wasm-keys-gen!");
+    let message = format!("Generated phrase: {}", phrase());
+    alert(message.as_str());
 }
+
+#[wasm_bindgen]
+pub fn phrase() -> String {
+    let mnemonic = Mnemonic::new(MnemonicType::Words12, Language::English);
+    let phrase: &str = mnemonic.phrase();
+    return phrase.to_string();
+}
+
+
